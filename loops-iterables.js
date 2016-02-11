@@ -154,19 +154,45 @@ console.assert(fizzbuzz(10) === "..fizz.buzzfizz..fizzbuzz")
 
 
 
+
+var alpha =
+"1234567890qwertyuiopasdfghjklzxcvbnm "
+
+var contains = function(sequence, element) {
+	if (sequence.indexOf(element) === -1) {
+		return false
+    }
+	else {
+		return true	
+}
+    }
+
+var stripPunk = function (inputString) {
+	
+	var newString = ""
+	for (var i= 0; i < inputString.length; i++){
+		var char = inputString[i]
+		if(contains(alpha,char.toLowerCase())) {
+			newString += char  
+// same as newString = newString + char			
+    }
+    }
+	return newString	
+}
+
+
 function findLongestWord(sentence){
 
     var arr = sentence.split(" ")
-	var newString = ""
+	var longestword = ""
 	for (var i = 0; i < arr.length; i++) {
         var word = arr[i]
-
-    if (word.length >= 4) {  
-	newString = word
-	return newString
+    if (longestword.length < stripPunk(word).length) {  
+	longestword = stripPunk(word)
+	
     }
     }
-
+return longestword
 	
 }
 
@@ -180,7 +206,7 @@ console.assert(findLongestWord("a book full of dogs") === "book")
 
 // XXXXX DEEP IN THE HEART OF TEXAS XXXX
 
-// console.assert(findLongestWord("don't mess with Texas") === "Texas")
+console.assert(findLongestWord("don't mess with Texas") === "Texas")
 
 
 
